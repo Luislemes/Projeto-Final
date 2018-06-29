@@ -27,14 +27,19 @@ namespace WpfView
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            AtualizarLista();
+        }
+
+        private void AtualizarLista()
+        {
             PacienteController pacienteController = new PacienteController();
             dgPacientes.ItemsSource = pacienteController.readPacientes();
         }
 
         private void dgPacientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid dg = ((DataGrid)sender);
-            Paciente pac = (Paciente)dg.Items[dg.SelectedIndex];
+            //DataGrid dg = ((DataGrid)sender);
+            //Paciente pac = (Paciente)dg.Items[dg.SelectedIndex];
         }
 
         private void dgPacientes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -46,6 +51,7 @@ namespace WpfView
                     int pacienteId = ((Paciente)dgPacientes.SelectedItem).PacienteId;
                     UpdatePaciente updatePaciente = new UpdatePaciente(pacienteId);
                     updatePaciente.ShowDialog();
+                    AtualizarLista();
                 }
             }
         }

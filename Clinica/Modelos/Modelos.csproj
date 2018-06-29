@@ -54,6 +54,15 @@
     <Compile Include="Funcionario.cs" />
     <Compile Include="HospitalContext.cs" />
     <Compile Include="Medico.cs" />
+    <Compile Include="Migrations\201806261639183_InitialCreate.cs" />
+    <Compile Include="Migrations\201806261639183_InitialCreate.Designer.cs">
+      <DependentUpon>201806261639183_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806292315317_Hospital.cs" />
+    <Compile Include="Migrations\201806292315317_Hospital.Designer.cs">
+      <DependentUpon>201806292315317_Hospital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +71,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806261639183_InitialCreate.resx">
+      <DependentUpon>201806261639183_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806292315317_Hospital.resx">
+      <DependentUpon>201806292315317_Hospital.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
