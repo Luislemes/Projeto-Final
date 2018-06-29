@@ -26,9 +26,13 @@ namespace Controles
 
         public void popularSecretariias()
         {
-            this.createSecretaria("Angelica", "1111111", DateTime.Now, "2222222", "Noturno");
-            this.createSecretaria("Gertrudez", "222222", DateTime.Now, "3333333", "Manhã");
-            this.createSecretaria("Antonieta", "333333", DateTime.Now, "4444444", "Noturno");
+            var secretarias = from secretaria in ctx.Secretarias select secretaria;
+            if (secretarias.Count() == 0)
+            {
+                this.createSecretaria("Angelica", "1111111", DateTime.Now, "2222222", "Noturno");
+                this.createSecretaria("Gertrudez", "222222", DateTime.Now, "3333333", "Manhã");
+                this.createSecretaria("Antonieta", "333333", DateTime.Now, "4444444", "Noturno");
+            }
         }
 
         public IList<Secretaria> readSecretaria()

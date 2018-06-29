@@ -24,10 +24,14 @@ namespace Controles
 
         public void populateContas()
         {
-            this.createConta("BB", "1234", 1);
-            this.createConta("Santander", "2345", 2);
-            this.createConta("Bradesco", "3456", 3);
-            this.createConta("Itaú", "4567", 4);
+            var contas = (from conta in ctx.Contas select conta).ToList();
+            if (contas.Count() == 0)
+            {
+                this.createConta("BB", "1234", 1);
+                this.createConta("Santander", "2345", 2);
+                this.createConta("Bradesco", "3456", 3);
+                this.createConta("Itaú", "4567", 4);
+            }
         }
 
         public IList<Conta> readContas()

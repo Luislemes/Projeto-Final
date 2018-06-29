@@ -23,9 +23,13 @@ namespace Controles
 
         public void populateEspecialidades()
         {
-            this.createEspecialidade("Gastro", 7000);
-            this.createEspecialidade("Cirurgião Plástico", 11000);
-            this.createEspecialidade("Endocrino", 5000);
+            var especialidades = from especialidade in ctx.Especialidades select especialidade;
+            if (especialidades.Count() == 0)
+            {
+                this.createEspecialidade("Gastro", 7000);
+                this.createEspecialidade("Cirurgião Plástico", 11000);
+                this.createEspecialidade("Endocrino", 5000);
+            }
         }
 
         public IList<Especialidade> readEspecialidades()
