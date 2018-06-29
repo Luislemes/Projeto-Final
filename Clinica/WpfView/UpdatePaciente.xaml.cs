@@ -44,7 +44,7 @@ namespace WpfView
             txtTelefone.Text = paciente.Telefone;
             dpDataNascimento.SelectedDate = paciente.Nascimento;
 
-            cbConvenio.SelectedItem = paciente.Convenio;
+            cbConvenio.SelectedValue = paciente.Convenio.Id;
         }
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
@@ -79,7 +79,7 @@ namespace WpfView
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar o usuário (" + ex.Message + ")");
+                MessageBox.Show("Erro ao salvar o Paciente (" + ex.Message + ")");
             }
         }
 

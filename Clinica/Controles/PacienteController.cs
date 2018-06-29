@@ -35,16 +35,28 @@ namespace Controles
 
         public IList<Paciente> readPacientes()
         {
-            var Pacientes = from Paciente in ctx.Pacientes select Paciente;
-            return Pacientes.ToList();
+            var Pacientes = (from Paciente in ctx.Pacientes select Paciente).ToList();
+            foreach (var pac in Pacientes)
+            {
+                pac.Convenio = (from pc in ctx.Pacientes
+                                join cv in ctx.Convenios on pc.Convenio.Id equals cv.Id
+                                where pc.PacienteId == pac.PacienteId
+                                select cv).SingleOrDefault();
+            }
+            return Pacientes;
         }
 
         public Paciente readPaciente(int pacienteId)
         {
-            var tmpPaciente = from Paciente in ctx.Pacientes
-                              where Paciente.PacienteId == pacienteId
-                              select Paciente;
-            return tmpPaciente.SingleOrDefault();
+            var tmpPaciente = (from Paciente in ctx.Pacientes
+                               where Paciente.PacienteId == pacienteId
+                               select Paciente).SingleOrDefault();
+
+            tmpPaciente.Convenio = (from pc in ctx.Pacientes
+                                    join cv in ctx.Convenios on pc.Convenio.Id equals cv.Id
+                                    where pc.PacienteId == pacienteId
+                                    select cv).SingleOrDefault();
+            return tmpPaciente;
         }
 
         public void updatePaciente(Paciente Paciente)

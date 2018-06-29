@@ -25,16 +25,52 @@ namespace Controles
 
         public IList<Consulta> readConsultas()
         {
-            var consultas = from consulta in ctx.Consultas select consulta;
-            return consultas.ToList();
+            var consultas = (from consulta in ctx.Consultas select consulta).ToList();
+
+            foreach (var ct in consultas)
+            {
+                ct.Medico = (from cs in ctx.Consultas
+                             join med in ctx.Medicos on cs.Medico.MedicoId equals med.MedicoId
+                             where cs.Id == ct.Id
+                             select med).SingleOrDefault();
+
+                ct.Secretaria = (from cs in ctx.Consultas
+                                 join sc in ctx.Secretarias on cs.Secretaria.SecretariaId equals sc.SecretariaId
+                                 where cs.Id == ct.Id
+                                 select sc).SingleOrDefault();
+
+                ct.Paciente = (from cs in ctx.Consultas
+                               join pc in ctx.Pacientes on cs.Paciente.PacienteId equals pc.PacienteId
+                               where cs.Id == ct.Id
+                               select pc).SingleOrDefault();
+            }
+
+            return consultas;
         }
 
         public Consulta readConsulta(int consultaId)
         {
-            var tempConsulta = from consulta in ctx.Consultas
-                               where consulta.Id == consultaId
-                               select consulta;
-            return tempConsulta.SingleOrDefault();
+            var tempConsulta = (from consulta in ctx.Consultas
+                                where consulta.Id == consultaId
+                                select consulta).SingleOrDefault();
+
+            tempConsulta.Medico = (from cs in ctx.Consultas
+                                   join med in ctx.Medicos on cs.Medico.MedicoId equals med.MedicoId
+                                   where cs.Id == consultaId
+                                   select med).SingleOrDefault();
+
+            tempConsulta.Secretaria = (from cs in ctx.Consultas
+                                       join sc in ctx.Secretarias on cs.Secretaria.SecretariaId equals sc.SecretariaId
+                                       where cs.Id == consultaId
+                                       select sc).SingleOrDefault();
+
+            tempConsulta.Paciente = (from cs in ctx.Consultas
+                                     join pc in ctx.Pacientes on cs.Paciente.PacienteId equals pc.PacienteId
+                                     where cs.Id == consultaId
+                                     select pc).SingleOrDefault();
+
+
+            return tempConsulta;
         }
 
         public void updateConsulta(Consulta Consulta)
@@ -58,4 +94,3 @@ namespace Controles
     }
 
 }
-

@@ -7,10 +7,27 @@
         mc:Ignorable="d"
         Title="Consultas" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dgConsultas" Margin="0,10,0,0" VerticalAlignment="Top" 
+        <!--<DataGrid x:Name="dgConsultas" Margin="0,10,0,0" VerticalAlignment="Top" 
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" Height="249" 
                   SelectionChanged="dgConsultas_SelectionChanged"
-                  MouseDoubleClick="dgConsultas_MouseDoubleClick"/>
+                  MouseDoubleClick="dgConsultas_MouseDoubleClick"/>-->
+
+
+        <DataGrid x:Name="dgConsultas" 
+                  ItemsSource="{Binding Consulta}" AutoGenerateColumns="False"
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" Height="249" 
+                  SelectionMode="Single" SelectionUnit ="FullRow"
+                  SelectionChanged="dgConsultas_SelectionChanged" 
+                  MouseDoubleClick="dgConsultas_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Hora"  Binding="{Binding Hora}"/>
+                <DataGridTextColumn Header="Paciente"  Binding="{Binding Paciente.Nome}"/>
+                <DataGridTextColumn Header="Medico"  Binding="{Binding Medico.Nome}"/>
+                <DataGridTextColumn Header="Secretaria"  Binding="{Binding Secretaria.Nome}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

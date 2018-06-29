@@ -8,10 +8,27 @@
         Title="PacienteView" Height="450" Width="800"
         Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dgPacientes" Margin="0,10,0,0" VerticalAlignment="Top" 
+        <!--<DataGrid x:Name="dgPacientes" Margin="0,10,0,0" VerticalAlignment="Top" 
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False" Height="249" 
                   SelectionChanged="dgPacientes_SelectionChanged"
-                  MouseDoubleClick="dgPacientes_MouseDoubleClick"/>
+                  MouseDoubleClick="dgPacientes_MouseDoubleClick"/>-->
+
+        <DataGrid x:Name="dgPacientes" 
+                  ItemsSource="{Binding Paciente}" AutoGenerateColumns="False"
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" Height="249" 
+                  SelectionMode="Single" SelectionUnit ="FullRow"
+                  SelectionChanged="dgPacientes_SelectionChanged" 
+                  MouseDoubleClick="dgPacientes_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PacienteId"  Binding="{Binding PacienteId}"/>
+                <DataGridTextColumn Header="Nome"  Binding="{Binding Nome}"/>
+                <DataGridTextColumn Header="Nascimento"  Binding="{Binding Nascimento, StringFormat=\{0:dd/MM/yyyy\}}"/>
+                <DataGridTextColumn Header="CPF"  Binding="{Binding CPF}"/>
+                <DataGridTextColumn Header="Telefone"  Binding="{Binding Telefone}"/>
+                <DataGridTextColumn Header="Convenio"  Binding="{Binding Convenio.Nome}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

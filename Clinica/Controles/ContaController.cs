@@ -32,8 +32,8 @@ namespace Controles
 
         public IList<Conta> readContas()
         {
-            var contas = from conta in ctx.Contas select conta;
-            return contas.ToList();
+            var contas = (from conta in ctx.Contas select conta).ToList();
+            return contas;
         }
 
         public Conta readConta(int contaId)
