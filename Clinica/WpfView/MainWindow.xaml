@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnConsultas" Content="Consultas" Click="btnConsultas_Click" HorizontalAlignment="Left" Margin="29,48,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnNewConsulta" Content="New Consulta" Click="btnNewConsulta_Click" HorizontalAlignment="Left" Margin="139,48,0,0" VerticalAlignment="Top" Width="91"/>
+        <Button x:Name="btnUpdateConsulta" Content="Update Consulta" Click="btnUpdateConsulta_Click" HorizontalAlignment="Left" Margin="261,48,0,0" VerticalAlignment="Top" Width="105"/>
+        <Button x:Name="btnMedicos" Content="Medicos"  Click="btnMedicos_Click" HorizontalAlignment="Left" Margin="29,116,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnNewMedico" Content="New Medico" Click="btnNewMedico_Click" HorizontalAlignment="Left" Margin="139,116,0,0" VerticalAlignment="Top" Width="91"/>
+        <Button x:Name="btnUpdateMedico" Content="Update Medico" Click="btnUpdateMedico_Click" HorizontalAlignment="Left" Margin="261,116,0,0" VerticalAlignment="Top" Width="105"/>
+        <Button x:Name="btnPaciente" Content="Paciente" Click="btnPaciente_Click" HorizontalAlignment="Left" Margin="29,183,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnNewPaciente" Content="New Paciente" Click="btnNewPaciente_Click" HorizontalAlignment="Left" Margin="139,183,0,0" VerticalAlignment="Top" Width="91"/>
+        <Button x:Name="btnUpdatePaciente" Content="Update Paciente" Click="btnUpdatePaciente_Click" HorizontalAlignment="Left" Margin="261,183,0,0" VerticalAlignment="Top" Width="105"/>
+    </Grid>
+</Window>

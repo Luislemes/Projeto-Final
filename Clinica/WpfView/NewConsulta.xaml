@@ -1,0 +1,69 @@
+﻿<Window x:Class="WpfView.NewConsulta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="NewConsulta" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Label Content="Médico" HorizontalAlignment="Left" Margin="55,38,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbMedico" HorizontalAlignment="Left" Margin="55,64,0,0" VerticalAlignment="Top" Width="351"
+                  SelectedValuePath="MedicoId" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{} {0} - {1}">
+                                <Binding Path="Nome"/>
+                                <Binding Path="CRM"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Paciente" HorizontalAlignment="Left" Margin="55,89,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbPaciente" HorizontalAlignment="Left" Margin="55,115,0,0" VerticalAlignment="Top" Width="351"
+                  SelectedValuePath="PacienteId" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{} {0} - {1}">
+                                <Binding Path="Nome"/>
+                                <Binding Path="Nascimento"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Secretária" HorizontalAlignment="Left" Margin="55,138,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbSecretaria" HorizontalAlignment="Left" Margin="55,164,0,0" VerticalAlignment="Top" Width="351"
+                  SelectedValuePath="SecretariaId" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{} {0} - {1}">
+                                <Binding Path="Nome"/>
+                                <Binding Path="Turno"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Data da Consulta" HorizontalAlignment="Left" Margin="55,186,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpConsulta" HorizontalAlignment="Left" Margin="55,212,0,0" VerticalAlignment="Top" Width="178"/>
+
+        <Button x:Name="btnOk" Content="Ok" HorizontalAlignment="Left" Margin="55,247,0,0" VerticalAlignment="Top" Width="75" Click="btnSalvar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="158,247,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+
+    </Grid>
+</Window>
